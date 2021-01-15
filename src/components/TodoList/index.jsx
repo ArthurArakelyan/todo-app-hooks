@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import { nanoid } from 'nanoid';
 
 import TodoHeader from '../TodoHeader';
@@ -11,28 +12,9 @@ import Modal from '../common/Modal';
 
 import styles from './TodoList.module.scss';
 
-// const todoSearch = (setArr, arr, searchValue) => {
-//   setArr(arr.map(todo => {
-//     const todoValue = todo.value.toLowerCase();
-//     const result = todoValue.includes(searchValue);
-
-//     if(result) {
-//       return {
-//         ...todo,
-//         searched: true
-//       }
-//     }
-
-//     return {
-//       ...todo,
-//       searched: false
-//     }
-//   }));
-// }
-
 const TodoList = () => {
   const [value, setValue] = useState('');
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalStorage('todos', []);
   const [edittingTodo, setEdittingTodo] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [buttons, setButtons] = useState([
@@ -59,8 +41,25 @@ const TodoList = () => {
   }, [isValid, modalIsValid]);
 
   useEffect(() => {
-    todoSearch();
-  }, [searchValue]);
+    setTodos(todos => {
+      return todos.map(todo => {
+        const todoValue = todo.value.toLowerCase();
+        const result = todoValue.includes(searchValue);
+
+        if (result) {
+          return {
+            ...todo,
+            searched: true
+          }
+        }
+
+        return {
+          ...todo,
+          searched: false
+        }
+      });
+    });
+  }, [searchValue, setTodos]);
 
   const todoFormSubmit = (e) => {
     e.preventDefault();
@@ -143,25 +142,6 @@ const TodoList = () => {
       return {
         ...btn,
         active: btn.id === id ? true : false
-      }
-    }));
-  }
-
-  const todoSearch = () => {
-    setTodos(todos.map(todo => {
-      const todoValue = todo.value.toLowerCase();
-      const result = todoValue.includes(searchValue);
-
-      if (result) {
-        return {
-          ...todo,
-          searched: true
-        }
-      }
-
-      return {
-        ...todo,
-        searched: false
       }
     }));
   }

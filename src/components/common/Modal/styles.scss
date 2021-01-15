@@ -60,7 +60,11 @@
 }
 .modal__form_input {
   width: 1% !important;
-  transition: width .6s ease-in-out !important;
+  transition: width .6s ease-in-out, box-shadow .3s ease-in-out, border-color .4s ease-in-out !important;
+}
+.modal__form_input:invalid:focus {
+  border-color:rgba(255, 0, 0, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 .modal__form_max {
   width: 100%;

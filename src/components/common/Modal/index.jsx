@@ -5,7 +5,7 @@ import './styles.scss';
 
 ReactModal.setAppElement('#root');
 
-const Modal = ({ modalIsOpen, edittingTodo, modalClose, modalInputChange, modalSubmit, maxValue }) => {
+const Modal = ({ modalIsOpen, edittingTodo, modalIsValid, modalClose, modalInputChange, modalSubmit, maxValue }) => {
   return (
     <ReactModal
       closeTimeoutMS={400}
@@ -30,6 +30,8 @@ const Modal = ({ modalIsOpen, edittingTodo, modalClose, modalInputChange, modalS
             type="text"
             className="modal__form_input form-control"
             value={edittingTodo.value}
+            maxLength={maxValue}
+            required={!modalIsValid}
             autoFocus
             onChange={modalInputChange}
           />

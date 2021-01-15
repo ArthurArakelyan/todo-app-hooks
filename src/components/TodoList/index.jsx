@@ -96,9 +96,8 @@ const TodoList = () => {
   }
 
   const valueChange = (e) => {
-    // const targetValue = e.target.value;
-    // setValue(value => targetValue.length <= maxValue ? targetValue : value);
-    setValue(e.target.value);
+    const targetValue = e.target.value;
+    setValue(value => targetValue.length <= maxValue ? targetValue : value);
   }
 
   const todoEdit = (id) => {

@@ -1,6 +1,35 @@
 html, body {
   font-size: 16px;
 }
+.App {
+  min-height: 100vh;
+  transition: all .3s ease-in-out;
+}
+.App.light {
+  background-color: white;
+  color: black;
+}
+.App.dark {
+  background-color: #1E1E1E;
+  color: white;
+}
+.themeChange {
+  position: absolute;
+  top: 0.5%;
+  right: 0.5%;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  outline: none !important;
+  border: none;
+  transition: color .3s ease-in-out;
+}
+.App.light .themeChange {
+  color: black;
+}
+.App.dark .themeChange {
+  color: yellow;
+}
 .wrapper {
   width: 500px;
   margin: 0 auto;
@@ -27,12 +56,17 @@ li {
 .list-group-item {
   transition: opacity .5s ease-in-out, border-color .3s ease-in-out;
 }
+.App.dark .form-control:invalid:focus {
+  border-color:rgba(255, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
+}
 
 .App.dark .form-control:focus {
-  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, 0.514) !important;
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, 0.514);
 }
 .App.dark .list-group-item {
-  border-color: rgba(255, 255, 255, .5);
+  border-color: rgba(255, 255, 255, .5) !important;
+  background-color: transparent;
 }
 
 @media only screen and (min-width: 1000px) {

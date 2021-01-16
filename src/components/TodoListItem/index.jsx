@@ -15,13 +15,14 @@ const TodoListItem = ({ todo, todoRemove, todoEdit, todoComplete }) => {
 
   return (
     todo.searched && <li
-      style={{ opacity: 0.4 }}
+      style={{ opacity: 0.5 }}
       className={`${styles.todo__list_item} list-group-item`}
       ref={todoRef}
     >
       <p
         style={{ textDecoration: todo.completed ? 'line-through' : 'unset' }}
-        onClick={() => todoComplete(todo.id)} className={styles.item__name}
+        onClick={() => todoComplete(todo.id)}
+        className={styles.item__name}
       >
         {todo.value}
       </p>

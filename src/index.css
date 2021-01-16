@@ -54,15 +54,15 @@ li {
   transition: box-shadow .4s ease-in-out, background-color .4s ease-in-out;
 }
 .list-group-item {
-  transition: opacity .5s ease-in-out, border-color .3s ease-in-out;
+  transition: opacity .5s ease-in-out, border-color .3s ease-in-out, background-color .3s ease-in-out;
 }
 .App.dark .form-control:invalid:focus {
-  border-color:rgba(255, 0, 0, 0.4) !important;
-  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
+  border-color:rgba(255, 28, 28, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem rgba(233, 28, 28, 0.5) !important;
 }
 
 .App.dark .form-control:focus {
-  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, 0.514);
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, 0.5);
 }
 .App.dark .list-group-item {
   border-color: rgba(255, 255, 255, .5) !important;

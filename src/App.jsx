@@ -6,7 +6,6 @@ import TodoList from './components/TodoList';
 
 const App = () => {
   const theme = useTheme();
-  console.log(theme);
 
   return (
     <div className={`App ${theme.theme}`}>

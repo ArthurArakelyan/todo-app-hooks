@@ -5,7 +5,9 @@ import { nanoid } from 'nanoid';
 import TodoHeader from '../TodoHeader';
 import TodoForm from '../TodoForm';
 import TodoListItem from '../TodoListItem';
+import TodoPrototype from '../TodoPrototype';
 import TodoListEmpty from '../TodoListEmpty';
+import TodosNotFound from '../TodosNotFound';
 import TodoSearch from '../TodoSearch';
 import TodoStatusFilter from '../TodoStatusFilter';
 import Modal from '../common/Modal';
@@ -30,6 +32,7 @@ const TodoList = () => {
   const maxValue = 50;
   const maxTodos = 15;
   const inputRef = useRef(null);
+  const isSearched = todos.filter(todo => todo.searched).length;
 
   useEffect(() => {
     if (!isValid || !modalIsValid) {
@@ -159,7 +162,7 @@ const TodoList = () => {
           todoFormSubmit={todoFormSubmit}
         />
 
-        {todos.length ? <ul className={`${styles.todo__list_todos} list-group`}>
+        {todos.length && isSearched ? <ul className={`${styles.todo__list_todos} list-group`}>
           {todos.map(todo => {
             const item = (
               <TodoListItem
@@ -183,8 +186,10 @@ const TodoList = () => {
             } else {
               return item;
             }
+
           })}
-        </ul> : <TodoListEmpty todoListEmpty={todoListEmpty} />}
+          {todos.length < maxTodos ? <TodoPrototype value={value} /> : null}
+        </ul> : !todos.length ? <TodoListEmpty todoListEmpty={todoListEmpty} /> : !isSearched ? <TodosNotFound /> : <TodoListEmpty todoListEmpty={todoListEmpty} />}
 
         <TodoSearch
           searchValue={searchValue}

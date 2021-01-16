@@ -1,0 +1,32 @@
+.todo__prototype {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+.todo__prototype_name {
+  user-select: none;
+  line-break: anywhere;
+  margin: 0 10px 0 0;
+}
+.todo__prototype_buttons {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  button {
+    cursor: default !important;
+    user-select: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:nth-child(2) {
+      margin-left: 6px !important;
+
+    }
+  }
+}
